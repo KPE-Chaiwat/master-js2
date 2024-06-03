@@ -1,12 +1,18 @@
-const express = require('express')
-const app = express()
-//const cors = require("cors")
+const express = require('express');
+const app = express();
+const cors = require("cors");
+const bodyParser = require('body-parser');
 const port = 8000;
 
 
 
-//app.use(cors())
-// Sample book data
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    limit: '150mb',
+    extended: true
+    })); 
+    // app.use(express.limit('10M'));
+app.use(cors())
+
 const books = [
   { id: 1, title: 'Book 1', author: 'Author 1' },
   { id: 2, title: 'Book 2', author: 'Author 2' },
