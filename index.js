@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const port = 8000;
 
 
-
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     limit: '150mb',
     extended: true
@@ -13,16 +13,26 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     // app.use(express.limit('10M'));
 app.use(cors())
 
-const books = [
-  { id: 1, title: 'Book 1', author: 'Author 1' },
-  { id: 2, title: 'Book 2', author: 'Author 2' },
-  { id: 3, title: 'Book 3', author: 'Author 3' },
+const topics = [
+  { id: 1, timestamp: "1717397440665" },
+  { id: 2, timestamp: "1717657969018" },
+  { id: 3, timestamp: "1717396886472" },
 ]
 
-// Endpoint to get all books
-app.get('/api/books', (req, res) => {
-  res.json(books)
 
+
+
+// Endpoint to get all books
+app.get('/topics', (req, res) => {
+  res.json(topics)
+
+})
+app.post('/tong',(req,res)=>{
+
+
+  console.log(req.body)
+  res.json({ok:"ok"})
+  
 })
 
 
